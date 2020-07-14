@@ -1,12 +1,17 @@
 
 -- set up tables to hold basic ssb datatypes
+
+-- set up for .tsv like import
+.headers on
+.separator "\t" 
+--.mode tabs
+
 drop table if exists about; 
 create table about (
   author text,
   name text,
   timestamp integer
 );
-.mode tabs
 .import tsv/about.tsv about
 
 
@@ -17,7 +22,6 @@ create table contacts (
   following boolean,
   timestamp integer
 );
-.mode tabs
 .import tsv/contacts.tsv contacts
 
 drop table if exists posts; 
@@ -31,5 +35,4 @@ create table posts (
   fork text,
   channel text
 );
-.mode tabs
 .import tsv/posts.tsv posts
